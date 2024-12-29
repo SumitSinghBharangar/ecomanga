@@ -41,8 +41,8 @@ class DynamicButton extends StatefulWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
           color: textColor ?? Colors.white,
         ),
       ),
@@ -89,7 +89,7 @@ class _DynamicButtonState extends State<DynamicButton> {
                     },
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 300),
-            padding: const EdgeInsets.symmetric(vertical: 15),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
               color:
                   ((widget.onPressed == null || (widget.isLoading ?? false)) ||

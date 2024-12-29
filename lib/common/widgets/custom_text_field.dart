@@ -1,3 +1,4 @@
+import 'package:ecomanga/common/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -71,7 +72,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: (widget.bottomPadding ?? true) ? 20 : 0),
+      padding: EdgeInsets.only(bottom: (widget.bottomPadding ?? true) ? 10 : 0),
       child: GestureDetector(
         onTap: () {
           _focusNode.requestFocus();
@@ -80,24 +81,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
           duration: const Duration(milliseconds: 400),
           curve: Curves.fastEaseInToSlowEaseOut,
           decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(_focused ? .4 : .2),
+            color: Colors.green.withOpacity(_focused ? .15 : .1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
             children: [
-              if (widget.iconData != null)
-                Container(
-                  margin: const EdgeInsets.all(8),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Icon(
-                    widget.iconData,
-                    color: Colors.black,
-                  ),
-                ),
               SizedBox(
                 width: 8.w,
               ),
@@ -125,9 +113,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   focusNode: _focusNode,
                   controller: widget.controller,
                   readOnly: widget.isReadOnly ?? false,
+                  style: TextStyle(
+                    color: AppColors.buttonColor,
+                  ),
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.zero,
                     hintText: widget.hintText,
+                    suffixIcon: Icon(
+                      widget.iconData,
+                      color: AppColors.buttonColor,
+                    ),
+                    hintStyle: TextStyle(
+                      color: AppColors.buttonColor,
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(100),
                       borderSide: BorderSide.none,

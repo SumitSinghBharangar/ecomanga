@@ -37,6 +37,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   iconsax: ^0.0.8
   smooth_page_indicator: ^1.2.0+3
+  firebase_auth: ^5.3.4
+  lottie: ^3.2.0
 
 dev_dependencies:
   flutter_test:

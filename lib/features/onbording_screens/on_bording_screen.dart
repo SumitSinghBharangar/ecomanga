@@ -1,10 +1,12 @@
 import 'dart:math';
 
+import 'package:ecomanga/common/app_colors.dart';
+import 'package:ecomanga/features/auth/screens/register_screen.dart';
+import 'package:ecomanga/features/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconsax/iconsax.dart';
 
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:lottie/lottie.dart';
 
 class OnbordingScreen extends StatefulWidget {
   const OnbordingScreen({super.key});
@@ -52,129 +54,156 @@ class _OnbordingScreenState extends State<OnbordingScreen>
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: PageView(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: _pageController,
-              children: [
-                _onboardingText(
-                  title: "Welcome to LifeSync",
-                  subtitle:
-                      'Discover a unified platform for managing your smart home, health, and habits.',
-                ),
-                _onboardingText(
-                  title: "Smart Home Control",
-                  subtitle:
-                      'Seamlessly manage your smart devices from a single app, making your home smarter and more efficient.',
-                ),
-                _onboardingText(
-                  title: "Health Tracking & Habit Formation",
-                  subtitle:
-                      'Monitor your health metrics and build positive habits with personalized insights and recommendations.',
-                ),
-                _onboardingText(
-                  title: "Connect with Your Community",
-                  subtitle:
-                      'Stay informed about local events and activities, and engage with your community like never before.',
-                ),
-              ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 22),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _pageController,
+                children: [
+                  _onboardingText(
+                    title: "Earn Rewards fro Eco-Actions",
+                    subtitle:
+                        'Complete challenges,earn point,and unlock rewards for making planet-friendly choices that benefits the community.',
+                  ),
+                  _onboardingText(
+                    title: "Join the Eco-Community",
+                    subtitle:
+                        'Connect with like-minded individuals, share achievements, and inspire each other to live more sustainability every day.',
+                  ),
+                  _onboardingText(
+                    title: "Shop Eco-Friendly Products",
+                    subtitle:
+                        'Discover sustainable products and exclusive discounts from eco-conscious brands, making it easy to shop green and live sustainabily',
+                  ),
+                ],
+              ),
             ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Column(
-              children: [
-                const Spacer(flex: 2),
-                SizedBox.square(
-                  dimension: size.width - 40,
-                  child: Stack(
-                    children: [
-                      Transform.rotate(
-                        angle: page * pi * 1.2,
-                        child: _rotatedBoxes(),
-                      ),
-                    ],
-                  ),
-                ),
-                const Spacer(flex: 2),
-                SmoothPageIndicator(
-                  controller: _pageController,
-                  count: 4,
-                  effect: WormEffect(
-                    offset: BorderSide.strokeAlignInside,
-                    dotColor:
-                        (_animation.value ?? Colors.white).withOpacity(.3),
-                    activeDotColor: (_animation.value ?? Colors.white),
-                    dotHeight: 5,
-                  ),
-                ),
-                const Spacer(flex: 4),
-                SizedBox(
-                  width: 72,
-                  height: 72,
-                  child: Stack(
-                    children: [
-                      Positioned.fill(
-                        child: CircularProgressIndicator(
-                          color: (_animation.value ?? Colors.white),
-                          value: (page + 1) / 4,
-                          strokeWidth: 4,
-                          strokeCap: StrokeCap.round,
-                        ),
-                      ),
-                      Positioned.fill(
-                        top: 5,
-                        bottom: 5,
-                        left: 5,
-                        right: 5,
-                        child: GestureDetector(
-                          onTap: () {
-                            if (page.round() == 3) {
-                              // Utils.go(
-                              //     context: context,
-                              //     screen: const LoginScreen(),
-                              //     replace: true);
-                            }
-                            _controller.dispose();
-                            _controller = AnimationController(
-                              vsync: this,
-                              duration: const Duration(milliseconds: 400),
-                            );
-                            _animation = ColorTween(
-                              begin: _animation.value!,
-                              end: circleColors[page.round()],
-                            ).animate(_controller)
-                              ..addListener(() => setState(() {}));
-                            _controller.forward();
-                            _pageController.nextPage(
-                              duration: const Duration(milliseconds: 1000),
-                              curve: Curves.fastEaseInToSlowEaseOut,
-                            );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: _animation.value,
-                            ),
-                            child: const Icon(
-                              Iconsax.arrow_right_1,
-                              color: Colors.white,
-                            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Column(
+                children: [
+                  const Spacer(flex: 2),
+                  const Spacer(flex: 4),
+                  SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: CircularProgressIndicator(
+                            color: AppColors.buttonColor,
+                            value: (page + 1) / 3,
+                            strokeWidth: 4,
+                            strokeCap: StrokeCap.round,
                           ),
                         ),
-                      )
-                    ],
+                        Positioned.fill(
+                          top: 5,
+                          bottom: 5,
+                          left: 5,
+                          right: 5,
+                          child: GestureDetector(
+                            child: Container(
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                  // _animation.value,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "${(page + 1).toInt().toString()}/3",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                      // color: AppColors.buttonColor,
+                                    ),
+                                  ),
+                                )),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: MediaQuery.paddingOf(context).bottom + 30),
-              ],
+                  SizedBox(height: MediaQuery.paddingOf(context).bottom + 30),
+                ],
+              ),
             ),
-          )
-        ],
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Column(
+                children: [
+                  const Spacer(flex: 2),
+                  const Spacer(flex: 4),
+                  SizedBox(
+                    width: 130,
+                    height: 45,
+                    child: GestureDetector(
+                      onTap: () {
+                        if (page.round() == 2) {
+                          Utils.go(
+                              context: context,
+                              screen: const RegisterScreen(),
+                              replace: true);
+                        }
+                        _controller.dispose();
+                        _controller = AnimationController(
+                          vsync: this,
+                          duration: const Duration(milliseconds: 400),
+                        );
+
+                        _controller.forward();
+                        _pageController.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.fastEaseInToSlowEaseOut,
+                        );
+                      },
+                      child: Container(
+                        width: 130.w,
+                        decoration: BoxDecoration(
+                            color: AppColors.buttonColor,
+                            borderRadius: BorderRadius.circular(5)
+                            // _animation.value,
+                            ),
+                        child: Center(
+                            child: page + 1 == 3
+                                ? const Text(
+                                    "Get Started",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  )
+                                : const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Next  ",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.arrow_forward,
+                                        color: Colors.white,
+                                      )
+                                    ],
+                                  )),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.paddingOf(context).bottom + 30),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -184,129 +213,33 @@ class _OnbordingScreenState extends State<OnbordingScreen>
     required String title,
     required String subtitle,
   }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          const Spacer(flex: 1),
-          const Spacer(flex: 3),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 24.sp,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            subtitle,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.paddingOf(context).bottom + 150,
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _rotatedBoxes() {
-    return Stack(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Positioned.fill(
-          child: Transform.rotate(
-            angle: -page * pi * .2,
-            child: Container(
-              padding: const EdgeInsets.only(
-                top: 50,
-                right: 20,
-              ),
-              child: Container(
-                height: 25,
-                width: 25,
-                decoration: BoxDecoration(
-                  color: _animation.value!.withOpacity(.1),
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: _animation.value!.withOpacity(.1),
-                      blurRadius: 20,
-                      blurStyle: BlurStyle.outer,
-                      spreadRadius: 5,
-                    )
-                  ],
-                ),
-              ),
-            ),
+        Lottie.asset(
+          'assets/lotties/login.json',
+        ),
+        // const Spacer(flex: 1),
+        Text(
+          title,
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            fontSize: 27.sp,
+            fontWeight: FontWeight.w700,
           ),
         ),
-        Positioned.fill(
-          child: Transform.rotate(
-            angle: -page * pi * 1.5,
-            child: Container(
-              padding: const EdgeInsets.only(right: 35, top: 85),
-              child: Container(
-                height: 15,
-                width: 15,
-                decoration: BoxDecoration(
-                  color: _animation.value!.withOpacity(.15),
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: _animation.value!.withOpacity(.2),
-                      blurRadius: 40,
-                      blurStyle: BlurStyle.outer,
-                    )
-                  ],
-                ),
-              ),
-            ),
+        const SizedBox(height: 10),
+        Text(
+          subtitle,
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.normal,
           ),
         ),
-        Positioned(
-          bottom: 120,
-          left: 15,
-          child: Container(
-            height: 15,
-            width: 15,
-            decoration: BoxDecoration(
-              color: _animation.value!.withOpacity(.4),
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: _animation.value!.withOpacity(.4),
-                  blurRadius: 10,
-                  blurStyle: BlurStyle.outer,
-                )
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: 40,
-          right: 55,
-          child: Container(
-            height: 18,
-            width: 18,
-            decoration: BoxDecoration(
-              color: _animation.value!.withOpacity(.7),
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: _animation.value!.withOpacity(.5),
-                  blurRadius: 10,
-                  blurStyle: BlurStyle.outer,
-                )
-              ],
-            ),
-          ),
-        ),
+        SizedBox(
+          height: MediaQuery.paddingOf(context).bottom + 150,
+        )
       ],
     );
   }
