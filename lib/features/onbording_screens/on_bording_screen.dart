@@ -65,16 +65,19 @@ class _OnbordingScreenState extends State<OnbordingScreen>
                 controller: _pageController,
                 children: [
                   _onboardingText(
+                    imageAddress: "assets/images/img1.png",
                     title: "Earn Rewards fro Eco-Actions",
                     subtitle:
                         'Complete challenges,earn point,and unlock rewards for making planet-friendly choices that benefits the community.',
                   ),
                   _onboardingText(
+                    imageAddress: "assets/images/img2.png",
                     title: "Join the Eco-Community",
                     subtitle:
                         'Connect with like-minded individuals, share achievements, and inspire each other to live more sustainability every day.',
                   ),
                   _onboardingText(
+                    imageAddress: "assets/images/img2.png",
                     title: "Shop Eco-Friendly Products",
                     subtitle:
                         'Discover sustainable products and exclusive discounts from eco-conscious brands, making it easy to shop green and live sustainabily',
@@ -212,12 +215,13 @@ class _OnbordingScreenState extends State<OnbordingScreen>
     // required String imgAddress,
     required String title,
     required String subtitle,
+    required String imageAddress,
   }) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Lottie.asset(
-          'assets/lotties/login.json',
+        Image.asset(
+          imageAddress,
         ),
         // const Spacer(flex: 1),
         Text(

@@ -2,6 +2,7 @@ import 'package:ecomanga/features/onbording_screens/on_bording_screen.dart';
 import 'package:ecomanga/features/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -38,6 +39,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: Image.asset(
+          "assets/images/app_icon.png",
+          height: 200.h,
+          width: 200.w,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
   }
 }

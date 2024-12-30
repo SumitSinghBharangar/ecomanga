@@ -16,6 +16,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final _fKey1 = GlobalKey<FormState>();
   final TextEditingController _phone = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _name = TextEditingController();
@@ -40,6 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           horizontal: 20.h,
         ),
         child: Form(
+          key: _fKey1,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -48,9 +50,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SizedBox(
                   height: MediaQuery.of(context).padding.top + 30,
                 ),
-                // Image.asset("assests/icons/appIcon.png",height: 60.h,fit: BoxFit.cover,),
-                SizedBox(
-                  height: 10.h,
+                Image.asset(
+                  "assets/icons/app_icon.png",
+                  height: 120.h,
+                  width: 120,
+
+                  // fit: BoxFit.cover,
                 ),
                 _headingText(
                   "Get Started",
@@ -62,15 +67,65 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 20.h,
                 ),
                 CustomTextField(
-                  hintText: "Full Name",
-                  iconData: Icons.person_2_outlined,
+                    hintText: "Full Name",
+                    controller: _name,
+                    autofocus: true,
+                    removeFocusOutside: true,
+                    iconData: Icons.person_2_outlined,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter your password";
+                      } else if (value.length < 3) {
+                        return "Name length should be 3 character";
+                      }
+                      return null;
+                    }),
+                CustomTextField(
+                  hintText: "Email Address",
+                  controller: _email,
+                  autofocus: true,
+                  removeFocusOutside: true,
+                  iconData: Icons.email,
+                  validator: (value) {
+                    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter an email address';
+                    } else if (!emailRegex.hasMatch(value)) {
+                      return 'Please enter a valid email address';
+                    }
+                    return null;
+                  },
                 ),
                 CustomTextField(
-                  hintText: 'Email Address',
-                  iconData: Icons.email_outlined,
+                  controller: _phone,
+                  hintText: "Enter Phone no",
+                  iconData: Icons.call,
+                  removeFocusOutside: true,
+                  isNumber: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "phone can not ve null";
+                    } else if (value.length != 10) {
+                      return "phone should be of 10 chars";
+                    }
+                    return null;
+                  },
                 ),
-                CustomTextField(hintText: 'Phone Number'),
-                CustomTextField(hintText: 'Password'),
+                CustomTextField(
+                  hintText: 'Password',
+                  controller: _password,
+                  autofocus: false,
+                  removeFocusOutside: true,
+                  iconData: Icons.lock_outline,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your password";
+                    } else if (value.length < 6) {
+                      return "Password length should be 6 character";
+                    }
+                    return null;
+                  },
+                ),
                 SizedBox(
                   height: 5.h,
                 ),
@@ -195,7 +250,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SizedBox(
                   height: 70.h,
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -220,16 +274,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 10.h,
+                  height: 20.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Divider(
-                      color: Colors.black,
-                      thickness: 1,
-                      height: 1.5.h,
+                    Expanded(
+                      child: Divider(
+                        color: Colors.grey,
+                        height: 1.5.h,
+                      ),
                     ),
                     SizedBox(
                       width: 5.h,
@@ -238,9 +293,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     SizedBox(
                       width: 5.h,
                     ),
-                    Divider(
-                      color: Colors.grey,
-                      height: 1.5.h,
+                    Expanded(
+                      child: Divider(
+                        color: Colors.grey,
+                        height: 1.5.h,
+                      ),
                     )
                   ],
                 ),
@@ -281,7 +338,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Text(
       text,
       style: TextStyle(
-          fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.black),
+          fontSize: 25.sp, fontWeight: FontWeight.bold, color: Colors.black),
     );
   }
 
