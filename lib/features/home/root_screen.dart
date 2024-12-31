@@ -145,7 +145,7 @@ class _RootScreenState extends State<RootScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(
-                        Icons.person_outline,
+                        Iconsax.people,
                         color: selectedIndex == 2
                             ? Colors.white
                             : AppColors.buttonColor,

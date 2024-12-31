@@ -1,3 +1,6 @@
+import 'package:ecomanga/features/auth/screens/register_screen.dart';
+import 'package:ecomanga/features/home/home_screen.dart';
+import 'package:ecomanga/features/home/root_screen.dart';
 import 'package:ecomanga/features/onbording_screens/on_bording_screen.dart';
 import 'package:ecomanga/features/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
   _init() async {
     Future.delayed(const Duration(seconds: 1), () {
       Utils.go(
-          context: context, screen: const OnbordingScreen(), replace: true);
+        context: context,
+        screen: const RegisterScreen(),
+        replace: true,
+      );
     });
 
     // FirebaseAuth.instance.currentUser == null
@@ -47,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Image.asset(
           "assets/icons/app_icon.png",
           height: 250.h,
-          width: 25.w,
+          width: 250.w,
         ),
       ),
     );
