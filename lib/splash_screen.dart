@@ -22,7 +22,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _init() async {
-    Utils.go(context: context, screen: const OnbordingScreen(), replace: true);
+    Future.delayed(const Duration(seconds: 1), () {
+      Utils.go(
+          context: context, screen: const OnbordingScreen(), replace: true);
+    });
 
     // FirebaseAuth.instance.currentUser == null
     //     ? Utils.go(
@@ -42,10 +45,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Image.asset(
-          "assets/images/app_icon.png",
-          height: 200.h,
-          width: 200.w,
-          fit: BoxFit.cover,
+          "assets/icons/app_icon.png",
+          height: 250.h,
+          width: 25.w,
         ),
       ),
     );

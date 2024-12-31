@@ -66,7 +66,7 @@ class _OnbordingScreenState extends State<OnbordingScreen>
                 children: [
                   _onboardingText(
                     imageAddress: "assets/images/img1.png",
-                    title: "Earn Rewards fro Eco-Actions",
+                    title: "Earn Rewards for Eco-Actions",
                     subtitle:
                         'Complete challenges,earn point,and unlock rewards for making planet-friendly choices that benefits the community.',
                   ),

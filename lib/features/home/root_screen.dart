@@ -1,3 +1,4 @@
+import 'package:ecomanga/common/app_colors.dart';
 import 'package:ecomanga/common/buttons/scale_button.dart';
 import 'package:ecomanga/features/challenges/challenge_screen.dart';
 import 'package:ecomanga/features/community/community_screen.dart';
@@ -35,9 +36,9 @@ class _RootScreenState extends State<RootScreen> {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
+        notchMargin: 5,
         child: SizedBox(
-          height: 60.h,
+          height: 40.h,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -50,20 +51,37 @@ class _RootScreenState extends State<RootScreen> {
                     selectedIndex = 0;
                   });
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Iconsax.home,
-                      color: selectedIndex == 0 ? Colors.blue : Colors.grey,
-                    ),
-                    Text(
-                      "Home",
-                      style: TextStyle(
-                        color: selectedIndex == 0 ? Colors.blue : Colors.grey,
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 7.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 7.h, horizontal: 10.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: selectedIndex == 0 ? AppColors.buttonColor : null,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Iconsax.home,
+                        color: selectedIndex == 0
+                            ? Colors.white
+                            : AppColors.buttonColor,
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      if (selectedIndex == 0)
+                        Text(
+                          "Home",
+                          style: TextStyle(
+                            color: selectedIndex == 0
+                                ? Colors.white
+                                : AppColors.buttonColor,
+                          ),
+                        )
+                    ],
+                  ),
                 ),
               ),
               ScaleButton(
@@ -74,20 +92,37 @@ class _RootScreenState extends State<RootScreen> {
                     selectedIndex = 1;
                   });
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.calendar_month_outlined,
-                      color: selectedIndex == 1 ? Colors.blue : Colors.grey,
-                    ),
-                    Text(
-                      "Attendence",
-                      style: TextStyle(
-                        color: selectedIndex == 1 ? Colors.blue : Colors.grey,
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 7.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 7.h, horizontal: 10.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: selectedIndex == 1 ? AppColors.buttonColor : null,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.diamond_outlined,
+                        color: selectedIndex == 1
+                            ? Colors.white
+                            : AppColors.buttonColor,
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      if (selectedIndex == 1)
+                        Text(
+                          "Challenges",
+                          style: TextStyle(
+                            color: selectedIndex == 1
+                                ? Colors.white
+                                : AppColors.buttonColor,
+                          ),
+                        )
+                    ],
+                  ),
                 ),
               ),
               ScaleButton(
@@ -98,20 +133,37 @@ class _RootScreenState extends State<RootScreen> {
                     selectedIndex = 2;
                   });
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.person_outline,
-                      color: selectedIndex == 2 ? Colors.blue : Colors.grey,
-                    ),
-                    Text(
-                      "Profile",
-                      style: TextStyle(
-                        color: selectedIndex == 2 ? Colors.blue : Colors.grey,
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 7.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 7.h, horizontal: 10.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: selectedIndex == 2 ? AppColors.buttonColor : null,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.person_outline,
+                        color: selectedIndex == 2
+                            ? Colors.white
+                            : AppColors.buttonColor,
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      if (selectedIndex == 2)
+                        Text(
+                          "Community",
+                          style: TextStyle(
+                            color: selectedIndex == 2
+                                ? Colors.white
+                                : AppColors.buttonColor,
+                          ),
+                        )
+                    ],
+                  ),
                 ),
               ),
               ScaleButton(
@@ -122,20 +174,37 @@ class _RootScreenState extends State<RootScreen> {
                     selectedIndex = 3;
                   });
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.more_horiz,
-                      color: selectedIndex == 3 ? Colors.blue : Colors.grey,
-                    ),
-                    Text(
-                      "More",
-                      style: TextStyle(
-                        color: selectedIndex == 3 ? Colors.blue : Colors.grey,
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 7.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 7.h, horizontal: 10.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: selectedIndex == 3 ? AppColors.buttonColor : null,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.person,
+                        color: selectedIndex == 3
+                            ? Colors.white
+                            : AppColors.buttonColor,
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      if (selectedIndex == 3)
+                        Text(
+                          "profile",
+                          style: TextStyle(
+                            color: selectedIndex == 3
+                                ? Colors.white
+                                : AppColors.buttonColor,
+                          ),
+                        )
+                    ],
+                  ),
                 ),
               ),
             ],

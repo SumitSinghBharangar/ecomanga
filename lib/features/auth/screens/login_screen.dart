@@ -2,7 +2,10 @@ import 'package:ecomanga/common/app_colors.dart';
 import 'package:ecomanga/common/buttons/dynamic_button.dart';
 import 'package:ecomanga/common/buttons/scale_button.dart';
 import 'package:ecomanga/common/widgets/custom_text_field.dart';
+import 'package:ecomanga/features/auth/screens/register_screen.dart';
+import 'package:ecomanga/features/auth/screens/verify_mail_screen.dart';
 import 'package:ecomanga/features/onbording_screens/on_bording_screen.dart';
+import 'package:ecomanga/features/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -129,75 +132,91 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 20.h,
+                  height: 3.h,
                 ),
                 DynamicButton.fromText(
-                  text: "Sign up",
-                  onPressed: () {},
+                  text: "Log in",
+                  onPressed: () {
+                    Utils.go(
+                      context: context,
+                      screen: const VerifyEmailScreen(),
+                    );
+                  },
                 ),
                 SizedBox(
                   height: 10.h,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 5.h,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
+                ScaleButton(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 5.h,
                     ),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/icons/google.png",
-                        height: 15.h,
-                        fit: BoxFit.cover,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
                       ),
-                      Text(
-                        "Sign up with Google",
-                        style: TextStyle(
-                          fontSize: 16.h,
-                          color: Colors.grey,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/icons/google.png",
+                          height: 25.h,
+                          fit: BoxFit.cover,
                         ),
-                      ),
-                      const Spacer(),
-                    ],
+                        const Spacer(),
+                        Text(
+                          "Sign up with Google",
+                          style: TextStyle(
+                            fontSize: 16.h,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 10.h,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 5.h,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
+                ScaleButton(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 5.h,
                     ),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // Image.asset("assets/icons/google.png",height: 15.h,fit: BoxFit.cover,),
-                      const Spacer(),
-                      Text(
-                        "Sign up with Facebook",
-                        style: TextStyle(
-                          fontSize: 16.h,
-                          color: Colors.grey,
-                        ),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
                       ),
-                      const Spacer(),
-                    ],
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/icons/facebook.png",
+                          height: 25.h,
+                          fit: BoxFit.cover,
+                        ),
+                        const Spacer(),
+                        Text(
+                          "Sign up with Facebook",
+                          style: TextStyle(
+                            fontSize: 16.h,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -207,11 +226,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    _normalText("Already a member? "),
+                    _normalText("New member? "),
                     ScaleButton(
-                      onTap: () {},
+                      onTap: () {
+                        Utils.go(
+                          context: context,
+                          screen: const RegisterScreen(),
+                        );
+                      },
                       child: Text(
-                        "Login",
+                        "Create an account",
                         style: TextStyle(
                           color: Colors.red,
                           fontSize: 14.sp,
@@ -252,21 +276,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 5.h,
                 ),
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.green,
-                    ),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Access as guest",
-                      style: TextStyle(
-                        fontSize: 16.h,
+                ScaleButton(
+                  onTap: () {},
+                  child: Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                    decoration: BoxDecoration(
+                      border: Border.all(
                         color: Colors.green,
+                      ),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Access as guest",
+                        style: TextStyle(
+                          fontSize: 16.h,
+                          color: Colors.green,
+                        ),
                       ),
                     ),
                   ),

@@ -180,71 +180,77 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SizedBox(
                   height: 10.h,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 5.h,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
+                ScaleButton(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 5.h,
                     ),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/icons/google.png",
-                        height: 25.h,
-                        fit: BoxFit.cover,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
                       ),
-                      const Spacer(),
-                      Text(
-                        "Sign up with Google",
-                        style: TextStyle(
-                          fontSize: 16.h,
-                          color: Colors.grey,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/icons/google.png",
+                          height: 25.h,
+                          fit: BoxFit.cover,
                         ),
-                      ),
-                      const Spacer(),
-                    ],
+                        const Spacer(),
+                        Text(
+                          "Sign up with Google",
+                          style: TextStyle(
+                            fontSize: 16.h,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 10.h,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 5.h,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
+                ScaleButton(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 5.h,
                     ),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/icons/facebook.png",
-                        height: 25.h,
-                        fit: BoxFit.cover,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
                       ),
-                      const Spacer(),
-                      Text(
-                        "Sign up with Facebook",
-                        style: TextStyle(
-                          fontSize: 16.h,
-                          color: Colors.grey,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/icons/facebook.png",
+                          height: 25.h,
+                          fit: BoxFit.cover,
                         ),
-                      ),
-                      const Spacer(),
-                    ],
+                        const Spacer(),
+                        Text(
+                          "Sign up with Facebook",
+                          style: TextStyle(
+                            fontSize: 16.h,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -304,21 +310,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SizedBox(
                   height: 5.h,
                 ),
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.green,
-                    ),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Access as guest",
-                      style: TextStyle(
-                        fontSize: 16.h,
+                ScaleButton(
+                  onTap: () {},
+                  child: Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                    decoration: BoxDecoration(
+                      border: Border.all(
                         color: Colors.green,
+                      ),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Access as guest",
+                        style: TextStyle(
+                          fontSize: 16.h,
+                          color: Colors.green,
+                        ),
                       ),
                     ),
                   ),
